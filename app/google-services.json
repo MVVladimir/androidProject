@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "904653374226",
+    "firebase_url": "https://words-55ca2-default-rtdb.firebaseio.com",
+    "project_id": "words-55ca2",
+    "storage_bucket": "words-55ca2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904653374226:android:9b857448b8bea71c4569cb",
+        "android_client_info": {
+          "package_name": "com.example.words"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904653374226-p9vsp1hovav1e23m32j6jbbqa14s8mo4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcNvKRDNKswfvBessekizY0mFyrzVOSl0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904653374226-p9vsp1hovav1e23m32j6jbbqa14s8mo4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
