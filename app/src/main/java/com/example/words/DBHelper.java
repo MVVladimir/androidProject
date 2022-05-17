@@ -9,8 +9,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -24,9 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String COLUMN_TRANSLATION = "translation";
     private static final String COLUMN_NOTES= "notes";
 
-    private static final String FIREBASE_REGION = ".europe-west1.firebasedatabase.app";
-
-//    DatabaseReference fdb;
+    private DatabaseReference fdb;
 
     DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -41,9 +39,9 @@ public class DBHelper extends SQLiteOpenHelper {
                         COLUMN_TRANSLATION + " TEXT, " +
                         COLUMN_NOTES + " TEXT);";
         db.execSQL(query);
-//        if (com.example.dictionary.AppUser.uid != "") {
-//            DatabaseReference fdb = FirebaseDatabase.getInstance(FIREBASE_REGION).getReference("User");
-//        }
+        if (com.example.words.AppUser.uid != "") {
+            fdb = FirebaseDatabase.getInstance().getReference(AppUser.uid);
+        }
     }
 
     @Override
@@ -66,11 +64,13 @@ public class DBHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Added Successfully!", Toast.LENGTH_SHORT).show();
         }
 
-//        if (com.example.words.AppUser.uid != "") {
-//            com.example.words.Word newWord = new com.example.words.Word(word, translation, notes);
-//            fdb.setValue(newWord);
-//            fdb.push();
-//        }
+        if (com.example.words.AppUser.uid != "") {
+            if (fdb == null) {
+                fdb = FirebaseDatabase.getInstance().getReference(AppUser.uid);
+            }
+            com.example.words.Word newWord = new com.example.words.Word(word, translation, notes);
+            fdb.setValue(newWord);
+        }
     }
 
     Cursor readAllData() {
